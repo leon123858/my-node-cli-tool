@@ -19,4 +19,11 @@ const askMode = () =>
 		choices: modeChoices,
 	});
 
-export { askMode, MODE_TYPE };
+const askString = (prompt: string) =>
+	prompts({
+		type: 'text',
+		name: 'string',
+		message: prompt,
+	});
+
+export { askString, askMode, MODE_TYPE };
