@@ -9,6 +9,7 @@ import { WEB_URL } from './const';
 import ApiWrapper from './utils/apiWrapper';
 import fs from 'fs/promises';
 import { createLogFile } from './utils/log';
+import * as SingleLineLog from 'single-line-log';
 
 const program = new Command();
 console.log(figlet.textSync('TTL CLI'));
@@ -128,6 +129,15 @@ const options = program.opts();
 				return false;
 			};
 			// main process
+			const length = file.length;
+			let count = 0;
+			SingleLineLog.stdout(
+				'request to web\n[' +
+					Math.floor((100 * count) / length) +
+					'%] ' +
+					count +
+					' request success'
+			);
 			for (let i of file) {
 				const {
 					對應訪銷人員: InterviewerName,
@@ -144,6 +154,14 @@ const options = program.opts();
 						Password,
 					});
 					if (result) {
+						count++;
+						SingleLineLog.stdout(
+							'request to web\n[' +
+								Math.floor((100 * count) / length) +
+								'%] ' +
+								count +
+								' request success'
+						);
 						continue;
 					}
 					// 不建議利用此 API 編輯, 許多變數的調整會有 bug
