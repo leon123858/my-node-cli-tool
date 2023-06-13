@@ -40,6 +40,9 @@ const options = program.opts();
 					{ encoding: 'utf-8' }
 				)
 			) as object[];
+			console.log(
+				"須確認 JSON 檔是否包含 '_' 字元, 其表示轉碼失敗, 須額外注意"
+			);
 			// init fetch
 			const cookieJar = new makeFetchCookie.toughCookie.CookieJar();
 			const fetchCookie = makeFetchCookie(fetch, cookieJar);
