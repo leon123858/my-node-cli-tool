@@ -1,4 +1,4 @@
-# ntuaf 管理 CLI
+# ttl 管理 CLI
 
 ## env
 
